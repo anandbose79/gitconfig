@@ -45,8 +45,9 @@ tmob:
   devices:
     pull:
       url: https://tools.t-mobile.com/api/devices/pull/devices
-    readfromfile:
+    file:
       path: /config/device-catalog-gc-json.txt 
+    readFromFile: N
 
 security.basic.enabled: false 
 
