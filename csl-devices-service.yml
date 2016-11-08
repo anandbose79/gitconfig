@@ -4,16 +4,6 @@ server:
 
 springfox.documentation.swagger.v2.path: /api-docs
 
-spring:
-  profiles: docker,full-stack
-  application:
-    name: csl-devices-service
-  cloud: 
-    stream:
-     kafka:
-      binder:
-        zkNodes: zookeeper
-        brokers: kafka
 
 eureka:
   client:
