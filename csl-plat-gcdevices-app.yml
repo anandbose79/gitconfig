@@ -1,0 +1,57 @@
+server:
+  port: ${PORT}
+  contextPath: /v1/devices
+
+springfox.documentation.swagger.v2.path: /api-docs
+
+spring:
+  profiles: docker,full-stack
+  application:
+    name: csl-devices-service
+  cloud: 
+    stream:
+     kafka:
+      binder:
+        zkNodes: zookeeper
+        brokers: kafka
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DEP_SERVER_1}:${DEP_PORT_1}/eureka/
+  instance:
+    preferIpAddress: true
+
+logs:
+  kafka:
+    host: kafka
+    port: 9092
+
+spring.sleuth.sampler.percentage: 1
+
+
+
+redis:
+  host: redis
+  port: 6379
+  
+cron:
+  expression: 0 0/30 * * * ?
+
+tmob:
+  validate:
+    tac:
+      msg: Please provide a valid TAC.
+  devices:
+    pull:
+      url: https://tools.t-mobile.com/api/devices/pull/devices
+    file:
+      path: /config/device-catalog-gc-json.txt 
+
+security.basic.enabled: false 
+
+
+logging.level.org.springframework.web: DEBUG 
+
+tmob.devices.read.file: N
+
